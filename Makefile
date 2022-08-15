@@ -1,6 +1,6 @@
 VERSION := "0.1.0"
 PRODUCT := build/app.pdx
-SOURCES := src/main.c src/wren.c
+SOURCES := src/lib/string.c src/main.c src/wren.c
 RESOURCES := Resources
 
 .DEFAULT_GOAL := debug

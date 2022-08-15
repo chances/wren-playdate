@@ -1,4 +1,4 @@
-//  Created by Chance Snow on 5/16/22
+//  Created by Chance Snow on 8/14/22
 //  Copyright © 2022 Snow Developments, LLC. All rights reserved.
 
 // #include <stdio.h>
@@ -8,8 +8,7 @@
 #include "pd_api.h"
 #include "wren.h"
 
-// TODO: Evaluate https://github.com/ericlewis/swift-playdate
-// TODO: Evaluate https://github.com/McDevon/taxman-engine
+Script* entryPoint = NULL;
 
 static int update(void* userdata);
 
@@ -24,6 +23,12 @@ int eventHandler(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg) {
     pd->display->setRefreshRate(20);
 
     assert(initWrenRuntime(pd));
+
+    // Load Wren entry point
+    entryPoint = malloc(sizeof(Script));
+    *entryPoint = loadScript("main", "main.wren");
+
+    // TODO: Call `eventHandler` in main Wren module
   }
 
   return 0;
@@ -31,11 +36,10 @@ int eventHandler(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg) {
 
 static int update(void* userdata) {
   PlaydateAPI* pd = userdata;
+
+  // TODO: Call `update` in main Wren module and refactor out these draw calls
+
   pd->graphics->clear(kColorWhite);
-
-  // TODO: Draw game
-  // See https://github.com/sayhiben/awesome-playdate
-
   pd->system->drawFPS(0,0);
 
   return 1;
