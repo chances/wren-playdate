@@ -1,3 +1,8 @@
+# Playdate Artifacts
+build/app.pdx
+Resources/*.wren
+Resources/pdex.bin
+
 # Prerequisites
 *.d
 
