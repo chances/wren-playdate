@@ -7,7 +7,7 @@ RESOURCES := Resources
 
 # CLANGFLAGS += -L "$(shell pwd)/build" build/libwren.a
 
-# Enable GCov code coverage
+# TODO: Enable GCov code coverage
 # debug: OPT += -fprofile-arcs -ftest-coverage
 # https://stackoverflow.com/a/879383/1363247
 # https://stackoverflow.com/a/23922211/1363247
@@ -30,6 +30,7 @@ SCRIPT_SOURCES = $(shell find src -type f -name '*.wren')
 scripts: $(SCRIPT_SOURCES)
 	@cp $(SCRIPT_SOURCES) $(RESOURCES)
 	# TODO: gzip bundle Wren sources for Playdate distribution
+	# TODO: Or bundle Wren sources compiled to bytecode for Playdate distribution
 
 #################################################
 # Subprojects
